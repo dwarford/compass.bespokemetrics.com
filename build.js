@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const nunjucks = require('nunjucks');
 const moment = require('moment');
@@ -7,6 +7,8 @@ const srcPath = path.resolve(__dirname, 'src/templates');
 const blogsSrcPath = path.resolve(__dirname, 'src/templates/blogs');
 const distPath = path.resolve(__dirname, 'dist');
 const blogsDistPath = path.resolve(__dirname, 'dist/blogs');
+
+const { SiteChecker } = require('broken-link-checker');
 
 // Create the blogsDistPath if it doesn't exist
 if (!fs.existsSync(blogsDistPath)) {
@@ -24,6 +26,8 @@ env.addFilter('date', (value, format) => {
 // A list of pages to render
 const pages = [
   { template: 'homepage.njk', outputFile: 'index.html' },
+  { template: 'security.njk', outputFile: 'security.html' },
+  { template: 'dbe.njk', outputFile: 'dbe.html' },
   // Add other pages here as you create them
 ];
 
@@ -51,3 +55,22 @@ fs.readdir(blogsSrcPath, (err, files) => {
     }
   });
 });
+function copyJavaScript() {
+  fs.copySync('src/js', 'dist/js');
+  console.log('JavaScript files copied to dist/js');
+}
+
+function copyImages() {
+  fs.copySync('src/images', 'dist/images');
+  console.log('Images copied to dist/images');
+}
+function copyAlpineJS() {
+  const srcPath = path.join(__dirname, 'node_modules', 'alpinejs', 'dist', 'cdn.min.js');
+  const destPath = path.join(__dirname, 'dist', 'js', 'alpine.js');
+  fs.copyFileSync(srcPath, destPath);
+  console.log('Alpine.js copied to dist/js');
+}
+
+copyImages();
+copyJavaScript();
+copyAlpineJS();
