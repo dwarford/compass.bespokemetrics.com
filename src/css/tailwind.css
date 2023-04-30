@@ -1,4 +1,42 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import 'https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Questrial&display=swap';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+@layer components {
+    .animate-ticker {
+        animation: ticker linear infinite;
+      }
+      
+      @keyframes ticker {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+      
+      .fade {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 20%;
+        background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+      }
+  
+      .fade-left {
+        left: 0;
+      }
+  
+      .fade-right {
+        right: 0;
+        transform: rotateY(180deg);
+      }
+  
+      .grayscale {
+        filter: grayscale(100%);
+      }
+  }

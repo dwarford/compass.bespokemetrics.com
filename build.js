@@ -28,6 +28,7 @@ const pages = [
   { template: 'homepage.njk', outputFile: 'index.html' },
   { template: 'security.njk', outputFile: 'security.html' },
   { template: 'dbe.njk', outputFile: 'dbe.html' },
+  { template: 'about.njk', outputFile: 'about.html' },
   // Add other pages here as you create them
 ];
 
