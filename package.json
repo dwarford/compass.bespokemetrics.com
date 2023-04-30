@@ -10,7 +10,9 @@
     "build:html": "NODE_ENV=production node build.js",
     "build": "npm-run-all build:*",
     "watch:html": "chokidar 'src/**/*.njk' -c 'npm run build:html'",
-    "check-links": "node checkLinks.js"
+    "check-links": "node checkLinks.js",
+    "deploy": "npm run build && aws s3 sync dist/ s3://${S3_BUCKET_NAME} && aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths '/*'"
+
   },
   "keywords": [],
   "author": "",
