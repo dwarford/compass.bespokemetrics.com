@@ -26,9 +26,21 @@ env.addFilter('date', (value, format) => {
 // A list of pages to render
 const pages = [
   { template: 'homepage.njk', outputFile: 'index.html' },
-  { template: 'security.njk', outputFile: 'security.html' },
   { template: 'dbe.njk', outputFile: 'dbe.html' },
-  { template: 'about.njk', outputFile: 'about.html' },
+  { template: 'demo.njk', outputFile: 'demo.html' },
+  { template: 'solutions/subcontractors.njk', outputFile: 'solutions/subcontractors.html' },
+  { template: 'solutions/gcs.njk', outputFile: 'solutions/subcontractors.html' },
+  { template: 'resources/blog.njk', outputFile: 'resources/blog.html' },
+  { template: 'resources/webinars.njk', outputFile: 'resources/webinars.html' },
+  { template: 'resources/partnerships.njk', outputFile: 'resources/partnerships.html' },
+  { template: 'about/about.njk', outputFile: 'about/about.html' },
+  { template: 'about/careers.njk', outputFile: 'about/careers.html' },
+  { template: 'about/contact.njk', outputFile: 'about/contact.html' },
+  { template: 'about/press.njk', outputFile: 'about/press.html' },
+  { template: 'product/prequalification.njk', outputFile: 'product/prequalification.html' },
+  { template: 'product/bidding.njk', outputFile: 'product/bidding.html' },
+  { template: 'product/security.njk', outputFile: 'product/security.html' },
+  { template: 'product/integrations.njk', outputFile: 'product/integrations.html' },
   // Add other pages here as you create them
 ];
 
@@ -56,6 +68,7 @@ fs.readdir(blogsSrcPath, (err, files) => {
     }
   });
 });
+
 function copyJavaScript() {
   fs.copySync('src/js', 'dist/js');
   console.log('JavaScript files copied to dist/js');

@@ -39,4 +39,17 @@
       .grayscale {
         filter: grayscale(100%);
       }
+
+      .animate-spin-slower {
+        animation: spin 6s linear infinite;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
   }
